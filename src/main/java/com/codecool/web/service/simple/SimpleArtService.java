@@ -2,7 +2,6 @@ package com.codecool.web.service.simple;
 
 import com.codecool.web.dao.ArtDao;
 import com.codecool.web.model.Art;
-import com.codecool.web.model.Shop;
 import com.codecool.web.service.ArtService;
 import com.codecool.web.service.exception.ServiceException;
 
@@ -23,11 +22,9 @@ public final class SimpleArtService implements ArtService {
     }
 
     @Override
-    public Art getArtByPoetId(String id) throws SQLException, ServiceException {
+    public List<Art> getArtByPoetId(int id) throws SQLException, ServiceException {
         try {
-            return artDao.findByPoetId(Integer.parseInt(id));
-        } catch (NumberFormatException ex) {
-            throw new ServiceException("Art id must be an integer");
+            return artDao.findByPoetId(id);
         } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
         }

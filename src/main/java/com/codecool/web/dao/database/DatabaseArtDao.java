@@ -27,17 +27,18 @@ public final class DatabaseArtDao extends AbstractDao implements ArtDao {
     }
 
     @Override
-    public Art findByPoetId(int poet_id) throws SQLException {
+    public List<Art> findByPoetId(int poet_id) throws SQLException {
+        List<Art> arts = new ArrayList<>();
         String sql = "SELECT id, title, content FROM Arts WHERE poet_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, poet_id);
             try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return fetchArt(resultSet);
+                while (resultSet.next()) {
+                    arts.add(fetchArt(resultSet));
                 }
             }
         }
-        return null;
+        return arts;
     }
 
     private Art fetchArt(ResultSet resultSet) throws SQLException {

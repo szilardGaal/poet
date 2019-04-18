@@ -12,8 +12,8 @@ SET client_min_messages = warning;
 SET default_tablespace = '';
 SET default_with_oids = false;
 
-DROP TABLE IF EXISTS Poets;
-DROP TABLE IF EXISTS Art;
+DROP TABLE IF EXISTS Poets CASCADE;
+DROP TABLE IF EXISTS Arts CASCADE;
 
 CREATE TABLE Poets (
 	id smallint NOT NULL,

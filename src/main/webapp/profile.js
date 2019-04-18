@@ -1,10 +1,3 @@
-function onShopsClicked() {
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onShopsResponse);
-    xhr.addEventListener('error', onNetworkError);
-    xhr.open('GET', 'protected/shops');
-    xhr.send();
-}
 
 function onCouponsClicked() {
     const xhr = new XMLHttpRequest();
@@ -14,13 +7,20 @@ function onCouponsClicked() {
     xhr.send();
 }
 
+function onArtLoad() {
+
+    alert("cucc!");
+}
+
 function onProfileLoad(user) {
     clearMessages();
-    showContents(['profile-content', 'logout-content']);
+    showContents(['profile-content', 'logout-content', 'art-content']);
 
-    const userEmailSpandEl = document.getElementById('user-email');
-    const userPasswordSpanEl = document.getElementById('user-password');
+    const userNameSpandEl = document.getElementById('user-name');
+    userNameSpandEl.textContent = user.name;
 
-    userEmailSpandEl.textContent = user.email;
-    userPasswordSpanEl.textContent = user.password;
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', onArtLoad);
+    xhr.open('GET', 'protected/profile');
+    xhr.send();
 }

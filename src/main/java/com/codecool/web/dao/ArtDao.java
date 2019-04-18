@@ -9,6 +9,6 @@ public interface ArtDao {
 
     List<Art> findAll() throws SQLException;
 
-    Art findByPoetId(int poet_id) throws SQLException;
+    List<Art> findByPoetId(int poet_id) throws SQLException;
 
 }

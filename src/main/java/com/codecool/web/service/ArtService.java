@@ -10,6 +10,6 @@ public interface ArtService {
 
     List<Art> getArts() throws SQLException;
 
-    Art getArtByPoetId(String poetId) throws SQLException, ServiceException;
+    List<Art> getArtByPoetId(int poetId) throws SQLException, ServiceException;
 
 }

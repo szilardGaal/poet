@@ -30,7 +30,7 @@ public final class DatabasePoetDao extends AbstractDao implements PoetDao {
         if (name == null || "".equals(name)) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
-        String sql = "SELECT id, name, password FROM users WHERE name = ?";
+        String sql = "SELECT id, name, password FROM poets WHERE name = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, name);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -44,8 +44,8 @@ public final class DatabasePoetDao extends AbstractDao implements PoetDao {
 
     private Poet fetchUser(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
-        String email = resultSet.getString("email");
+        String name = resultSet.getString("name");
         String password = resultSet.getString("password");
-        return new Poet(id, email, password);
+        return new Poet(id, name, password);
     }
 }
