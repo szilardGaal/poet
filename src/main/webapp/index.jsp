@@ -31,7 +31,7 @@
 <div id="login-content" class="content">
     <h1>Login</h1>
     <form id="login-form" onsubmit="return false;">
-        <input type="text" name="email">
+        <input type="text" name="name">
         <input type="password" name="password">
         <button id="login-button">Login</button>
     </form>
