@@ -1,3 +1,16 @@
+function onClickSearchButton() {
+    const searchField = document.getElementById('searchField');
+    const value = searchField.value;
+    debugger;
+    if (value == '') {
+        return;
+    }
+    const poemString = searchField.getAttribute('poem');
+    let count = (poemString.match(new RegExp(value, 'gi')) || []).length;
+
+    searchField.value = value + ' occured ' + count + ' times';
+} 
+
 function onPoemReceived() {
     const pack = JSON.parse(this.responseText);
     contentString = pack.content;
@@ -5,8 +18,22 @@ function onPoemReceived() {
 
     const poemEl = document.getElementById(contentTitle);
     contentEl = document.createElement('p');
-    contentEl.innerHTML = contentString +'<hr>';
+    contentP = document.createElement('p');
+    contentP.innerHTML = contentString + '<hr>';
 
+    const searchElP = document.createElement('p');
+    const searchField = document.createElement('input');
+    searchField.setAttribute('type', 'text');
+    searchField.setAttribute('value', '');
+    searchField.setAttribute('id', 'searchField');
+    searchField.setAttribute('poem', contentString);
+
+    const searchButton = document.createElement('button');
+    searchButton.innerHTML = 'search';
+    searchButton.addEventListener('click', onClickSearchButton);
+    searchElP.appendChild(searchField);
+    searchElP.appendChild(searchButton);
+   
     const parentEl = poemEl.parentElement.childNodes;
 
     for (let i = 0; i < parentEl.length; i ++) {
@@ -14,6 +41,8 @@ function onPoemReceived() {
             parentEl[i].removeChild(parentEl[i].lastChild);
         }
     }
+    contentEl.appendChild(searchElP);
+    contentEl.appendChild(contentP);
 
     poemEl.appendChild(contentEl);
 }
