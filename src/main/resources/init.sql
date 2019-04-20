@@ -33,7 +33,7 @@ CREATE TABLE Arts (
 
 
 
-INSERT INTO Poets VALUES (1, 'Edgar Alan Poe', 'raven');
+INSERT INTO Poets VALUES (1, 'Edgar Allan Poe', 'raven');
 INSERT INTO Poets VALUES (2, 'József Attila', 'vonat');
 
 INSERT INTO Arts VALUES (1, 'The Raven',

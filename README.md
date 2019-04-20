@@ -1,3 +1,10 @@
+#Logins
+name: József Attila
+pw: vonat
+
+name: Edgar Allan Poe
+pw: raven
+
 # About
 
 Quickstart repo for a Maven managed AJAX web-application using Servlets and JDBC.
