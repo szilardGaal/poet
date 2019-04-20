@@ -11,4 +11,7 @@ public interface ArtDao {
 
     List<Art> findByPoetId(int poet_id) throws SQLException;
 
+    List<String> findArtTitlesByPoetId(int poet_id) throws SQLException;
+
+    String findPoemByTitle(String title) throws SQLException;
 }

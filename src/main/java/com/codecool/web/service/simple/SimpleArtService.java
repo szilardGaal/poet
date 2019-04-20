@@ -17,6 +17,16 @@ public final class SimpleArtService implements ArtService {
     }
 
     @Override
+    public String getPoemByTitle(String title) throws SQLException {
+        return artDao.findPoemByTitle(title);
+    }
+
+    @Override
+    public List<String> getArtTitlesByPoetId(int id) throws SQLException {
+        return artDao.findArtTitlesByPoetId(id);
+    }
+
+    @Override
     public List<Art> getArts() throws SQLException {
         return artDao.findAll();
     }

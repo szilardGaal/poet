@@ -1,18 +1,10 @@
 package com.codecool.web.servlet;
 
 import com.codecool.web.dao.ArtDao;
-import com.codecool.web.dao.PoetDao;
 import com.codecool.web.dao.database.DatabaseArtDao;
-import com.codecool.web.dao.database.DatabasePoetDao;
-import com.codecool.web.dto.ContentDto;
-import com.codecool.web.model.Art;
 import com.codecool.web.model.Poet;
-import com.codecool.web.service.LoginService;
-import com.codecool.web.service.exception.ServiceException;
 import com.codecool.web.service.simple.SimpleArtService;
-import com.codecool.web.service.simple.SimpleLoginService;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,14 +25,10 @@ public final class ProfileServlet extends AbstractServlet {
 
             Poet poet = (Poet) req.getSession().getAttribute("poet");
             int poetId = poet.getId();
-            List<Art> arts = artService.getArtByPoetId(poetId);
+            List<String> titles = artService.getArtTitlesByPoetId(poetId);
 
-            ContentDto pack = new ContentDto(arts, poet);
+            sendMessage(resp, HttpServletResponse.SC_OK, titles);
 
-            sendMessage(resp, HttpServletResponse.SC_OK, pack);
-
-        } catch (ServiceException ex) {
-            sendMessage(resp, HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
         } catch (SQLException ex) {
             handleSqlError(resp, ex);
         }

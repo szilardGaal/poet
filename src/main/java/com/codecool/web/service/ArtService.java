@@ -12,4 +12,8 @@ public interface ArtService {
 
     List<Art> getArtByPoetId(int poetId) throws SQLException, ServiceException;
 
+    List<String> getArtTitlesByPoetId(int id) throws SQLException;
+
+    String getPoemByTitle(String title) throws SQLException;
+
 }

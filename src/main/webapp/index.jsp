@@ -39,10 +39,9 @@
 <div id="profile-content" class="hidden content">
     <h1>Profile</h1>
     <p>Name: <span id="user-name"></span></p>
-    <h2>Links</h2>
-    <ul id="art-content" class="hidden content">
-        
-    </ul>
+    <h2>Works</h2>
+    <div id="art-content" class="hidden content">
+    </div>
 </div>
 
 <div id="back-to-profile-content" class="hidden content">

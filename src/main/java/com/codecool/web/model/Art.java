@@ -6,13 +6,13 @@ public final class Art extends AbstractModel {
 
     private final String title;
     private final String content;
-    private final int poet_id;
+    private final int poetId;
 
-    public Art(int id, String title, String content, int poet_id) {
+    public Art(int id, String title, String content, int poetId) {
         super(id);
         this.title = title;
         this.content = content;
-        this.poet_id = poet_id;
+        this.poetId = poetId;
     }
 
     public String getTitle() {
@@ -23,12 +23,12 @@ public final class Art extends AbstractModel {
         return content;
     }
 
-    public int getPoet_id() {
-        return poet_id;
+    public int getPoetId() {
+        return poetId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), title, poet_id);
+        return Objects.hash(super.hashCode(), title, poetId);
     }
 }
